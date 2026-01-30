@@ -57,14 +57,12 @@ router.get("/guest-login", async (req, res) => {
   res.redirect("/");
 });
 
-
-
+// GET /auth/sign-in - Display sign in form
 router.get("/sign-in", (req, res) => {
   res.render("auth/sign-in.ejs");
 });
 
-
-
+// POST /auth/sign-in - Process sign in form
 router.post("/sign-in", async (req, res) => {
 
   const userInDatabase = await User.findOne({ username: req.body.username });
