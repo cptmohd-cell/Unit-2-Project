@@ -70,7 +70,7 @@ router.get("/:partId/edit", async (req, res) => {
   }
 });
 
-
+// PUT /parts/:partId - Update a part listing
 router.put("/:partId", async (req, res) => {
   try {
     // Block guest users from updating parts
