@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Part = require("../models/Part.js");
 
-
+// GET /parts - Display all parts
 router.get("/", async (req, res) => {
   try {
     const parts = await Part.find().populate("owner");
