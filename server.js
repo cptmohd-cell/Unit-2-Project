@@ -27,17 +27,7 @@ app.use(
 );
 app.use(passUserToView)
 
-
-
-
-
-
-
-
-
-
-
-
+// Database Connection Function
 async function connectToDB(){ 
     try{
         await mongoose.connect(process.env.MONGODB_URI)
