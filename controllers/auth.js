@@ -8,10 +8,12 @@ const bcrypt = require("bcrypt");
  * Handles user sign-up, sign-in, sign-out, and guest access
  */
 
+// GET /auth/sign-up - Display sign up form
 router.get("/sign-up", (req, res) => {
   res.render("auth/sign-up.ejs");
 });
 
+// POST /auth/sign-up - Process sign up form
 router.post("/sign-up", async (req, res) => {
   const userInDatabase = await User.findOne({ username: req.body.username });
   if (userInDatabase) {
