@@ -92,7 +92,7 @@ router.put("/:partId", async (req, res) => {
   }
 });
 
-
+// DELETE /parts/:partId - Delete a part listing
 router.delete("/:partId", async (req, res) => {
   try {
     // Block guest users from deleting parts
