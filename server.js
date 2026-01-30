@@ -9,13 +9,14 @@ const partsController = require("./controllers/parts.js");
 const session = require('express-session');
 const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");
-const methodOverride = require('method-override')
+const methodOverride = require('method-override') // Method from Canvas
 
 app.use(express.static('public')) 
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'))
 app.use(methodOverride('_method'))
 app.set('view engine', 'ejs')
+
 
 app.use(
   session({
