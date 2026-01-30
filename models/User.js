@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 
+/**
+ * User Schema - Defines the structure for user accounts
+ */
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
