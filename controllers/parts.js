@@ -38,7 +38,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-
+// GET /parts/:partId - Display a single part
 router.get("/:partId", async (req, res) => {
   try {
     const part = await Part.findById(req.params.partId).populate("owner");
