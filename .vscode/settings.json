@@ -1,0 +1,8 @@
+{
+  "notebook.defaultFormatter": "vscode.markdown-language-features",
+  "cSpell.words": [
+    "WCAG"
+  ],
+  "github.copilot.chat.agent.autoFix": true,
+  "github.copilot.chat.anthropic.thinking.budgetTokens": 32000
+}

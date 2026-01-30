@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - AutoSpace Performance Parts</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <%- include('../navbar') %>
+    
+    <div class="auth-container">
+      <h1>Create Account</h1>
+      <form action="/auth/sign-up" method="post" class="auth-form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" required placeholder="Choose a username" />
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" required placeholder="Create a password" />
+        </div>
+        
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" name="confirmPassword" id="confirmPassword" required placeholder="Confirm your password" />
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Sign Up</button>
+      </form>
+      
+      <div class="auth-link">
+        Already have an account? <a href="/auth/sign-in">Sign in here</a>
+      </div>
+    </div>
+    <%- include('../footer') %>  </body>
+</html>

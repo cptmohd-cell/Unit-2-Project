@@ -1,0 +1,20 @@
+<nav>
+    <div>
+        <a href="/" class="nav-brand">
+            <img src="/AUTO-SPACE-LOGO.jpg" alt="AutoSpace Logo" class="nav-logo">
+            <span>AutoSpace Performance Parts</span>
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/parts">Browse Parts</a>
+            <% if (user){ %>
+                <a href="/parts/new">Sell a Part</a>
+                <span style="color: white; opacity: 0.9;">Welcome, <%= user.username %>!</span>
+                <a href="/auth/sign-out">Logout</a>
+            <% } else{ %>
+                <a href="/auth/sign-up">Sign up</a>
+                <a href="/auth/sign-in">Login</a>
+            <% } %>
+        </div>
+    </div>
+</nav>

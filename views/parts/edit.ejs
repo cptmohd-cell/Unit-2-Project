@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit <%= part.name %> - AutoSpace Performance Parts</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('../navbar') %>
+
+    <main class="container">
+        <div class="form-container">
+            <h1>Edit Performance Part</h1>
+            
+            <form action="/parts/<%= part._id %>?_method=PUT" method="POST" class="part-form">
+                <div class="form-group">
+                    <label for="name">Part Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" value="<%= part.name %>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="partNumber">Part Number <span class="required">*</span></label>
+                    <input type="text" id="partNumber" name="partNumber" value="<%= part.partNumber %>" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category">Category <span class="required">*</span></label>
+                        <select id="category" name="category" required>
+                            <option value="Engine" <%= part.category === 'Engine' ? 'selected' : '' %>>Engine</option>
+                            <option value="Transmission" <%= part.category === 'Transmission' ? 'selected' : '' %>>Transmission</option>
+                            <option value="Brakes" <%= part.category === 'Brakes' ? 'selected' : '' %>>Brakes</option>
+                            <option value="Suspension" <%= part.category === 'Suspension' ? 'selected' : '' %>>Suspension</option>
+                            <option value="Electrical" <%= part.category === 'Electrical' ? 'selected' : '' %>>Electrical</option>
+                            <option value="Body" <%= part.category === 'Body' ? 'selected' : '' %>>Body</option>
+                            <option value="Interior" <%= part.category === 'Interior' ? 'selected' : '' %>>Interior</option>
+                            <option value="Exhaust" <%= part.category === 'Exhaust' ? 'selected' : '' %>>Exhaust</option>
+                            <option value="Cooling" <%= part.category === 'Cooling' ? 'selected' : '' %>>Cooling</option>
+                            <option value="Other" <%= part.category === 'Other' ? 'selected' : '' %>>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="condition">Condition <span class="required">*</span></label>
+                        <select id="condition" name="condition" required>
+                            <option value="New" <%= part.condition === 'New' ? 'selected' : '' %>>New</option>
+                            <option value="Used" <%= part.condition === 'Used' ? 'selected' : '' %>>Used</option>
+                            <option value="Refurbished" <%= part.condition === 'Refurbished' ? 'selected' : '' %>>Refurbished</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="manufacturer">Manufacturer <span class="required">*</span></label>
+                    <input type="text" id="manufacturer" name="manufacturer" value="<%= part.manufacturer %>" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="price">Price ($) <span class="required">*</span></label>
+                        <input type="number" id="price" name="price" min="0" step="0.01" value="<%= part.price %>" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantity">Quantity <span class="required">*</span></label>
+                        <input type="number" id="quantity" name="quantity" min="0" value="<%= part.quantity %>" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="vehicleCompatibility">Vehicle Compatibility <span class="required">*</span></label>
+                    <input type="text" id="vehicleCompatibility" name="vehicleCompatibility" 
+                           value="<%= part.vehicleCompatibility %>" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description <span class="required">*</span></label>
+                    <textarea id="description" name="description" rows="5" required><%= part.description %></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Update Part</button>
+                    <a href="/parts/<%= part._id %>" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <%- include('../footer') %>
+</body>
+</html>

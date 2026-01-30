@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Part - AutoSpace Performance Parts</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('../navbar') %>
+
+    <main class="container">
+        <div class="form-container">
+            <h1>List Your Performance Part</h1>
+            
+            <form action="/parts" method="POST" class="part-form">
+                <div class="form-group">
+                    <label for="name">Part Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required placeholder="e.g., Brake Pad Set">
+                </div>
+
+                <div class="form-group">
+                    <label for="partNumber">Part Number <span class="required">*</span></label>
+                    <input type="text" id="partNumber" name="partNumber" required placeholder="e.g., BP-12345">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category">Category <span class="required">*</span></label>
+                        <select id="category" name="category" required>
+                            <option value="">Select Category</option>
+                            <option value="Engine">Engine</option>
+                            <option value="Transmission">Transmission</option>
+                            <option value="Brakes">Brakes</option>
+                            <option value="Suspension">Suspension</option>
+                            <option value="Electrical">Electrical</option>
+                            <option value="Body">Body</option>
+                            <option value="Interior">Interior</option>
+                            <option value="Exhaust">Exhaust</option>
+                            <option value="Cooling">Cooling</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="condition">Condition <span class="required">*</span></label>
+                        <select id="condition" name="condition" required>
+                            <option value="">Select Condition</option>
+                            <option value="New">New</option>
+                            <option value="Used">Used</option>
+                            <option value="Refurbished">Refurbished</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="manufacturer">Manufacturer <span class="required">*</span></label>
+                    <input type="text" id="manufacturer" name="manufacturer" required placeholder="e.g., Bosch, Brembo">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="price">Price ($) <span class="required">*</span></label>
+                        <input type="number" id="price" name="price" min="0" step="0.01" required placeholder="0.00">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantity">Quantity <span class="required">*</span></label>
+                        <input type="number" id="quantity" name="quantity" min="0" required placeholder="0">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="vehicleCompatibility">Vehicle Compatibility <span class="required">*</span></label>
+                    <input type="text" id="vehicleCompatibility" name="vehicleCompatibility" required 
+                           placeholder="e.g., 2015-2020 Honda Civic, 2018-2022 Toyota Camry">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description <span class="required">*</span></label>
+                    <textarea id="description" name="description" rows="5" required 
+                              placeholder="Provide detailed information about the part..."></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Add Part</button>
+                    <a href="/parts" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <%- include('../footer') %>
+</body>
+</html>

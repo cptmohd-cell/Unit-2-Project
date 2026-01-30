@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= part.name %> - AutoSpace Performance Parts</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('../navbar') %>
+
+    <main class="container">
+        <div class="part-detail">
+            <div class="part-detail-header">
+                <div>
+                    <h1><%= part.name %></h1>
+                    <p class="part-number-large">Part Number: <%= part.partNumber %></p>
+                </div>
+                <span class="badge-large <%= part.condition === 'New' ? 'badge-success' : part.condition === 'Refurbished' ? 'badge-warning' : 'badge-secondary' %>">
+                    <%= part.condition %>
+                </span>
+            </div>
+
+            <div class="part-detail-body">
+                <div class="detail-section">
+                    <h2>Product Information</h2>
+                    <dl class="detail-list">
+                        <dt>Category</dt>
+                        <dd><%= part.category %></dd>
+                        
+                        <dt>Manufacturer</dt>
+                        <dd><%= part.manufacturer %></dd>
+                        
+                        <dt>Price</dt>
+                        <dd class="price-large">$<%= part.price.toFixed(2) %></dd>
+                        
+                        <dt>Availability</dt>
+                        <dd>
+                            <span class="<%= part.quantity === 0 ? 'out-of-stock' : part.quantity < 5 ? 'low-stock' : 'in-stock' %>">
+                                <%= part.quantity === 0 ? 'Out of Stock' : part.quantity < 5 ? `Low Stock (${part.quantity} remaining)` : `In Stock (${part.quantity} available)` %>
+                            </span>
+                        </dd>
+                        
+                        <dt>Vehicle Compatibility</dt>
+                        <dd><%= part.vehicleCompatibility %></dd>
+                        
+                        <dt>Seller</dt>
+                        <dd><%= part.owner.username %></dd>
+                        
+                        <dt>Listed</dt>
+                        <dd><%= new Date(part.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></dd>
+                    </dl>
+                </div>
+
+                <div class="detail-section">
+                    <h2>Description</h2>
+                    <p class="description-text"><%= part.description %></p>
+                </div>
+            </div>
+
+            <div class="part-detail-actions">
+                <a href="/parts" class="btn btn-secondary">Back to Inventory</a>
+                
+                <% if (user && part.owner._id.toString() === user._id.toString()) { %>
+                    <a href="/parts/<%= part._id %>/edit" class="btn btn-info">Edit Part</a>
+                    <form action="/parts/<%= part._id %>?_method=DELETE" method="POST" style="display: inline;" 
+                          onsubmit="return confirm('Are you sure you want to delete this part?');">
+                        <button type="submit" class="btn btn-danger">Delete Part</button>
+                    </form>
+                <% } %>
+            </div>
+        </div>
+    </main>
+
+    <%- include('../footer') %>
+</body>
+</html>

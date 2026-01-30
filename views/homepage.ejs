@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoSpace Performance Parts - Quality Auto Parts Marketplace</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon"> 
+</head>
+<body>
+    <%- include('navbar') %>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Welcome to AutoSpace Performance Parts Store</h1>
+            <p>Your trusted marketplace for buying and selling quality automotive performanceparts</p>
+            <div class="hero-buttons">
+                <% if (user) { %>
+                    <a href="/parts" class="btn">Browse Parts</a>
+                    <a href="/parts/new" class="btn btn-outline">Sell a Part</a>
+                <% } else { %>
+                    <a href="/auth/sign-up" class="btn">Get Started</a>
+                    <a href="/parts" class="btn btn-outline">Browse Parts</a>
+                <% } %>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <h3>🏪 Wide Spare Parts Collection</h3>
+                <p>Whatever spare parts you are seeking, you will find it in our store. We aim to have every automobile spare part you need.</p>
+            </div>
+            <div class="feature-card">
+                <h3>💰 Affordable Cost</h3>
+                <p>No other store can compete with our OEM parts prices. Get the best quality at unbeatable prices.</p>
+            </div>
+            <div class="feature-card">
+                <h3>👨‍🔧 Experienced Staff</h3>
+                <p>Our staff will help you find what you are looking for with no time! Expert assistance for all your automotive needs.</p>
+            </div>
+        </section>
+
+        <section class="services-section">
+            <h2 style="text-align: center; margin-bottom: 2rem; color: var(--text-primary);">Our Services</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>🔧 OEM Spare Parts</h3>
+                    <p>Original parts and great quality replacement parts for your vehicle. We stock a comprehensive range of OEM parts.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🚗 Body Parts</h3>
+                    <p>Great collection of local market body parts which customers always need. Complete body part solutions.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🎨 Paints</h3>
+                    <p>Professional automotive paints for all your vehicle refinishing needs.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>⚙️ Power Tools</h3>
+                    <p>Our Power Tools section is what workshop owners and industry individuals always search for.</p>
+                </div>
+            </div>
+        </section>
+
+        <% if (!user) { %>
+            <section style="text-align: center; padding: 3rem 0;">
+                <h2 style="margin-bottom: 1rem; color: var(--text-primary);">Ready to get started?</h2>
+                <p style="margin-bottom: 2rem; color: var(--text-secondary); font-size: 1.1rem;">
+                    Join thousands of auto enthusiasts buying and selling parts
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="/auth/sign-up" class="btn btn-primary" style="font-size: 1.1rem; padding: 0.75rem 2rem;">Sign Up Now</a>
+                    <a href="/auth/sign-in" class="btn btn-secondary" style="font-size: 1.1rem; padding: 0.75rem 2rem;">Login</a>
+                </div>
+            </section>
+        <% } %>
+    </main>
+
+    <%- include('footer') %>
+</body>
+</html>

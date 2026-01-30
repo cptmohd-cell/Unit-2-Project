@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parts Inventory - AutoSpace Performance Parts</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('../navbar') %>
+
+    <main class="container">
+        <div class="page-header">
+            <h1>Performance Parts Inventory</h1>
+            <% if (user) { %>
+                <a href="/parts/new" class="btn btn-primary">Add New Part</a>
+            <% } %>
+        </div>
+
+        <% if (parts.length === 0) { %>
+            <div class="empty-state">
+                <p>No parts in inventory yet.</p>
+                <% if (user) { %>
+                    <a href="/parts/new" class="btn btn-primary">Add the first part</a>
+                <% } %>
+            </div>
+        <% } else { %>
+            <div class="parts-grid">
+                <% parts.forEach(part => { %>
+                    <div class="part-card">
+                        <div class="part-card-header">
+                            <h3><%= part.name %></h3>
+                            <span class="badge <%= part.condition === 'New' ? 'badge-success' : part.condition === 'Refurbished' ? 'badge-warning' : 'badge-secondary' %>">
+                                <%= part.condition %>
+                            </span>
+                        </div>
+                        <div class="part-card-body">
+                            <p class="part-number"><strong>Part #:</strong> <%= part.partNumber %></p>
+                            <p class="category"><strong>Category:</strong> <%= part.category %></p>
+                            <p class="manufacturer"><strong>Manufacturer:</strong> <%= part.manufacturer %></p>
+                            <p class="price"><strong>Price:</strong> $<%= part.price.toFixed(2) %></p>
+                            <p class="quantity">
+                                <strong>In Stock:</strong> 
+                                <span class="<%= part.quantity === 0 ? 'out-of-stock' : part.quantity < 5 ? 'low-stock' : '' %>">
+                                    <%= part.quantity %>
+                                </span>
+                            </p>
+                            <p class="seller"><strong>Seller:</strong> <%= part.owner.username %></p>
+                        </div>
+                        <div class="part-card-footer">
+                            <a href="/parts/<%= part._id %>" class="btn btn-secondary">View Details</a>
+                            <% if (user && part.owner._id.toString() === user._id.toString()) { %>
+                                <a href="/parts/<%= part._id %>/edit" class="btn btn-info">Edit</a>
+                            <% } %>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+    </main>
+
+    <%- include('../footer') %>
+</body>
+</html>
