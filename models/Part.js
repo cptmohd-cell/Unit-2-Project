@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 
+/**
+ * Part Schema - Defines the structure for automotive parts in the marketplace
+ */
 const partSchema = new mongoose.Schema({
   name: {
     type: String,
