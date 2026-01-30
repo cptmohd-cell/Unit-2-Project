@@ -15,13 +15,14 @@ const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");
 const methodOverride = require('method-override') // Method from Canvas
 
+// Middleware Configuration
 app.use(express.static('public')) 
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'))
 app.use(methodOverride('_method'))
 app.set('view engine', 'ejs')
 
-
+// Session Configuration
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
