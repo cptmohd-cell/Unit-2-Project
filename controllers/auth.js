@@ -22,12 +22,28 @@ router.post("/sign-up", async (req, res) => {
   const hashedPassword = bcrypt.hashSync(req.body.password, 10);
   req.body.password = hashedPassword;
 
-
+  //guest account log-in addition
+  if (req.body.username === "guest") {
+    req.body.password = bcrypt.hashSync("guestpassword", 10);
+  }
+  
 
   const user = await User.create(req.body);
   res.redirect("/auth/sign-in");
 });
 
+//guest account log-in route
+router.get("/guest-login", async (req, res) => {
+  const guestUser = await User.findOne({ username: "guest" });;
+  if (!guestUser) {
+    const hashedPassword = bcrypt.hashSync("guestpassword", 10);
+    const guestUser = await User.create({
+      username: "guest",
+      password: hashedPassword,
+    });
+  }
+  res.redirect("/auth/sign-in");
+});
 
 
 

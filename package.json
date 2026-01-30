@@ -1,7 +1,7 @@
 {
-  "name": "autoparts-store",
+  "name": "autospace-performance-parts",
   "version": "1.0.0",
-  "description": "A full-stack marketplace for buying and selling automotive parts",
+  "description": "A full-stack marketplace for buying and selling automotive performance parts",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "auto-parts",
+    "autospace-performance-parts",
     "marketplace",
     "express",
     "mongodb",
