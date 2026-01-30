@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-
+// GET /parts/new - Display form to create new part
 router.get("/new", (req, res) => {
   // Block guest users from accessing the sell page
   if (req.session.user.isGuest) {
