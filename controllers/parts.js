@@ -22,7 +22,7 @@ router.get("/new", (req, res) => {
   res.render("parts/new.ejs");
 });
 
-
+// POST /parts - Create a new part listing
 router.post("/", async (req, res) => {
   try {
     // Block guest users from creating parts
