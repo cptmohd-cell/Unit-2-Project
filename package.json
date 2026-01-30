@@ -23,7 +23,7 @@
     "ejs": "^3.1.10",
     "express": "^5.2.1",
     "express-session": "^1.18.2",
-    "heroku": "^8.1.9",
+    "heroku": "^8.11.5",
     "method-override": "^3.0.0",
     "mongoose": "^9.1.2",
     "morgan": "^1.10.1",
