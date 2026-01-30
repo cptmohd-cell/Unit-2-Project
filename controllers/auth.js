@@ -37,7 +37,7 @@ router.post("/sign-up", async (req, res) => {
   res.redirect("/auth/sign-in");
 });
 
-//guest account log-in route
+// GET /auth/guest-login - Auto-login as guest user
 router.get("/guest-login", async (req, res) => {
   let guestUser = await User.findOne({ username: "guest" });
   if (!guestUser) {
