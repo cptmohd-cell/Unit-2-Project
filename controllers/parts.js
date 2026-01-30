@@ -49,7 +49,7 @@ router.get("/:partId", async (req, res) => {
   }
 });
 
-
+// GET /parts/:partId/edit - Display edit form for a part
 router.get("/:partId/edit", async (req, res) => {
   try {
     // Block guest users from editing parts
