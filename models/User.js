@@ -15,6 +15,15 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+userSchema.virtual("parts", {
+  ref: "Part",
+  localField: "_id",
+  foreignField: "owner",
+});
+userSchema.set("toObject", { virtuals: true });
+userSchema.set("toJSON", { virtuals: true });
+// Compile model from schema
+
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
