@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Part = require("../models/Part.js");
 
-// INDEX - Show all parts
+
 router.get("/", async (req, res) => {
   try {
     const parts = await Part.find().populate("owner");
@@ -13,12 +13,12 @@ router.get("/", async (req, res) => {
   }
 });
 
-// NEW - Show form to create new part
+
 router.get("/new", (req, res) => {
   res.render("parts/new.ejs");
 });
 
-// CREATE - Add new part to database
+
 router.post("/", async (req, res) => {
   try {
     req.body.owner = req.session.user._id;
@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// SHOW - Display a specific part
+
 router.get("/:partId", async (req, res) => {
   try {
     const part = await Part.findById(req.params.partId).populate("owner");
@@ -41,7 +41,7 @@ router.get("/:partId", async (req, res) => {
   }
 });
 
-// EDIT - Show form to edit a part
+
 router.get("/:partId/edit", async (req, res) => {
   try {
     const part = await Part.findById(req.params.partId);
@@ -57,7 +57,7 @@ router.get("/:partId/edit", async (req, res) => {
   }
 });
 
-// UPDATE - Update a specific part
+
 router.put("/:partId", async (req, res) => {
   try {
     const part = await Part.findById(req.params.partId);
@@ -74,7 +74,7 @@ router.put("/:partId", async (req, res) => {
   }
 });
 
-// DELETE - Remove a specific part
+
 router.delete("/:partId", async (req, res) => {
   try {
     const part = await Part.findById(req.params.partId);

@@ -1,7 +1,6 @@
-// imports
-const express = require("express") //importing express package
-const app = express() // creates a express application
-const dotenv = require("dotenv").config() //this allows me to use my .env values in this file
+const express = require("express") 
+const app = express()
+const dotenv = require("dotenv").config() 
 const mongoose = require("mongoose")
 const morgan = require('morgan')
 const authController = require("./controllers/auth.js");
@@ -12,11 +11,11 @@ const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");
 const methodOverride = require('method-override')
 
-app.use(express.static('public')) // my app will serve all static files from public folder
+app.use(express.static('public')) 
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'))
 app.use(methodOverride('_method'))
-// new
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -37,7 +36,7 @@ app.use(passUserToView)
 
 
 
-async function connectToDB(){ //connection to the database
+async function connectToDB(){ 
     try{
         await mongoose.connect(process.env.MONGODB_URI)
         console.log("Connected to Database")
@@ -48,7 +47,7 @@ async function connectToDB(){ //connection to the database
 }
 
 
-connectToDB() // connect to database
+connectToDB() 
 
 
 
