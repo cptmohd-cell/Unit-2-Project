@@ -34,15 +34,22 @@ router.post("/sign-up", async (req, res) => {
 
 //guest account log-in route
 router.get("/guest-login", async (req, res) => {
-  const guestUser = await User.findOne({ username: "guest" });;
+  let guestUser = await User.findOne({ username: "guest" });
   if (!guestUser) {
     const hashedPassword = bcrypt.hashSync("guestpassword", 10);
-    const guestUser = await User.create({
+    guestUser = await User.create({
       username: "guest",
       password: hashedPassword,
+      isGuest: true,
     });
   }
-  res.redirect("/auth/sign-in");
+  // Auto-login the guest user
+  req.session.user = {
+    username: guestUser.username,
+    _id: guestUser._id,
+    isGuest: true,
+  };
+  res.redirect("/");
 });
 
 
@@ -72,7 +79,8 @@ router.post("/sign-in", async (req, res) => {
  
   req.session.user = {
     username: userInDatabase.username,
-    _id: userInDatabase._id
+    _id: userInDatabase._id,
+    isGuest: userInDatabase.isGuest || false,
   };
 
   res.redirect("/");

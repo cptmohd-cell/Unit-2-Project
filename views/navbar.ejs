@@ -8,8 +8,10 @@
             <a href="/">Home</a>
             <a href="/parts">Browse Parts</a>
             <% if (user){ %>
-                <a href="/parts/new">Sell a Part</a>
-                <span style="color: white; opacity: 0.9;">Welcome, <%= user.username %>!</span>
+                <% if (!user.isGuest) { %>
+                    <a href="/parts/new">Sell a Part</a>
+                <% } %>
+                <span style="color: white; opacity: 0.9;">Welcome, <%= user.username %><%= user.isGuest ? ' (Guest)' : '' %>!</span>
                 <a href="/auth/sign-out">Logout</a>
             <% } else{ %>
                 <a href="/auth/sign-up">Sign up</a>

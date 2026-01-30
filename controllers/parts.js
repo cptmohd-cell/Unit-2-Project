@@ -15,12 +15,20 @@ router.get("/", async (req, res) => {
 
 
 router.get("/new", (req, res) => {
+  // Block guest users from accessing the sell page
+  if (req.session.user.isGuest) {
+    return res.send("Guest users cannot sell parts. Please create an account to sell.");
+  }
   res.render("parts/new.ejs");
 });
 
 
 router.post("/", async (req, res) => {
   try {
+    // Block guest users from creating parts
+    if (req.session.user.isGuest) {
+      return res.send("Guest users cannot sell parts. Please create an account to sell.");
+    }
     req.body.owner = req.session.user._id;
     await Part.create(req.body);
     res.redirect("/parts");
@@ -44,6 +52,11 @@ router.get("/:partId", async (req, res) => {
 
 router.get("/:partId/edit", async (req, res) => {
   try {
+    // Block guest users from editing parts
+    if (req.session.user.isGuest) {
+      return res.send("Guest users cannot edit parts. Please create an account.");
+    }
+    
     const part = await Part.findById(req.params.partId);
     
     if (!part.owner.equals(req.session.user._id)) {
@@ -60,6 +73,11 @@ router.get("/:partId/edit", async (req, res) => {
 
 router.put("/:partId", async (req, res) => {
   try {
+    // Block guest users from updating parts
+    if (req.session.user.isGuest) {
+      return res.send("Guest users cannot update parts. Please create an account.");
+    }
+    
     const part = await Part.findById(req.params.partId);
     
     if (!part.owner.equals(req.session.user._id)) {
@@ -77,6 +95,11 @@ router.put("/:partId", async (req, res) => {
 
 router.delete("/:partId", async (req, res) => {
   try {
+    // Block guest users from deleting parts
+    if (req.session.user.isGuest) {
+      return res.send("Guest users cannot delete parts. Please create an account.");
+    }
+    
     const part = await Part.findById(req.params.partId);
     
     if (!part.owner.equals(req.session.user._id)) {
