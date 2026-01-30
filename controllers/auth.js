@@ -3,7 +3,10 @@ const router = express.Router();
 const User = require("../models/user.js");
 const bcrypt = require("bcrypt");
 
-
+/**
+ * Authentication Controller
+ * Handles user sign-up, sign-in, sign-out, and guest access
+ */
 
 router.get("/sign-up", (req, res) => {
   res.render("auth/sign-up.ejs");
