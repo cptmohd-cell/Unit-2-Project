@@ -79,6 +79,11 @@
                     <textarea id="description" name="description" rows="5" required><%= part.description %></textarea>
                 </div>
 
+                <div class="form-group">
+                    <label for="image">Image URL</label>
+                    <input type="url" id="image" name="image" value="<%= part.image || '' %>" placeholder="https://example.com/image.jpg">
+                </div>
+
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">Update Part</button>
                     <a href="/parts/<%= part._id %>" class="btn btn-secondary">Cancel</a>
