@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Part - AutoSpace Performance Parts</title>
     <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/js-input-extension.js"></script>
 </head>
 <body>
     <%- include('../navbar') %>
@@ -78,8 +79,10 @@
 
                 <div class="form-group">
                     <label for="description">Description <span class="required">*</span></label>
-                    <textarea id="description" name="description" rows="5" required 
-                              placeholder="Provide detailed information about the part..."></textarea>
+                    <div data-js-input='{"title": "Part Description", "theme": "light", "autoFormat": true}'>
+                        <textarea id="description" name="description" rows="5" required 
+                                  placeholder="Provide detailed information about the part..."></textarea>
+                    </div>
                 </div>
 
                 <div class="form-group">

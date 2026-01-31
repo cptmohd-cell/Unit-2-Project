@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Input Extension Demo - AutoSpace Performance Parts</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/js-input-extension.js"></script>
+    <style>
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .demo-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+        }
+        .demo-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #1f2937;
+        }
+        .demo-description {
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <%- include('navbar') %>
+
+    <main class="container">
+        <div class="demo-container">
+            <h1>JavaScript Input Extension Demo</h1>
+            <p>This page demonstrates the enhanced JavaScript input extension with syntax highlighting, validation, and formatting capabilities.</p>
+
+            <div class="demo-section">
+                <h2 class="demo-title">Basic JavaScript Input</h2>
+                <p class="demo-description">A simple JavaScript input with syntax highlighting and line numbers.</p>
+                <div data-js-input='{"title": "JavaScript Code", "theme": "light"}'>
+                    <textarea placeholder="Enter your JavaScript code here...">// Example JavaScript function
+function greetUser(name) {
+    const message = `Hello, ${name}!`;
+    console.log(message);
+    return message;
+}
+
+// Call the function
+greetUser("World");</textarea>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2 class="demo-title">Dark Theme Input</h2>
+                <p class="demo-description">Same functionality but with a dark theme for better visibility in low-light conditions.</p>
+                <div data-js-input='{"title": "Dark Mode Editor", "theme": "dark", "autoFormat": true}'>
+                    <textarea placeholder="Enter JavaScript code in dark mode...">// Complex JavaScript example
+class Calculator {
+    constructor() {
+        this.result = 0;
+    }
+
+    add(num) {
+        this.result += num;
+        return this;
+    }
+
+    subtract(num) {
+        this.result -= num;
+        return this;
+    }
+
+    multiply(num) {
+        this.result *= num;
+        return this;
+    }
+
+    divide(num) {
+        if (num === 0) {
+            throw new Error("Cannot divide by zero");
+        }
+        this.result /= num;
+        return this;
+    }
+
+    getResult() {
+        return this.result;
+    }
+
+    reset() {
+        this.result = 0;
+        return this;
+    }
+}
+
+// Usage example
+const calc = new Calculator();
+const result = calc.add(10).multiply(2).subtract(5).getResult();
+console.log(`Final result: ${result}`);</textarea>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2 class="demo-title">Part Description with JavaScript</h2>
+                <p class="demo-description">Integration example for the parts listing form - allows sellers to add JavaScript-powered descriptions.</p>
+                <div data-js-input='{"title": "Enhanced Part Description", "theme": "light", "autoFormat": true, "validateSyntax": true}'>
+                    <textarea placeholder="Add JavaScript-enhanced description for your part...">// Part Description Example
+const partDetails = {
+    name: "High-Performance Brake Kit",
+    brand: "Brembo",
+    features: [
+        "Improved stopping power",
+        "Reduced brake fade",
+        "Sporty appearance",
+        "Easy installation"
+    ],
+    compatibility: ["2015-2020 Honda Civic", "2017-2021 Acura ILX"],
+    warranty: "2 years unlimited mileage"
+};
+
+// Generate description
+function generateDescription(details) {
+    let desc = `${details.name} by ${details.brand}\n\n`;
+    desc += "Key Features:\n";
+    details.features.forEach(feature => {
+        desc += `• ${feature}\n`;
+    });
+    desc += `\nCompatible Vehicles:\n`;
+    details.compatibility.forEach(vehicle => {
+        desc += `• ${vehicle}\n`;
+    });
+    desc += `\nWarranty: ${details.warranty}`;
+    return desc;
+}
+
+// Display the formatted description
+console.log(generateDescription(partDetails));</textarea>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2 class="demo-title">Custom Validation Example</h2>
+                <p class="demo-description">Test the syntax validation feature by entering code with errors.</p>
+                <div data-js-input='{"title": "Validation Test", "theme": "light", "validateSyntax": true}'>
+                    <textarea placeholder="Try entering code with syntax errors to see validation...">// This code has intentional errors for testing
+function testFunction( {
+    console.log("Missing closing parenthesis");
+    
+    if (true {
+        console.log("Missing closing bracket");
+    }
+    
+    const obj = {
+        name: "test"
+        age: 25  // Missing comma
+    };
+    
+    return obj;</textarea>
+                </div>
+            </div>
+
+            <div class="demo-section">
+                <h2 class="demo-title">Features Overview</h2>
+                <div class="features">
+                    <div class="feature-card">
+                        <h3>🎨 Syntax Highlighting</h3>
+                        <p>Automatic color-coding for keywords, strings, numbers, comments, functions, and operators.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📊 Line Numbers</h3>
+                        <p>Automatic line numbering for easy code reference and debugging.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>✅ Syntax Validation</h3>
+                        <p>Real-time JavaScript syntax checking with error reporting.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🎯 Auto Formatting</h3>
+                        <p>One-click code formatting for cleaner, more readable code.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📋 Copy & Clear</h3>
+                        <p>Easy copy-to-clipboard and clear functions for quick operations.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🌙 Theme Support</h3>
+                        <p>Light and dark themes for comfortable coding in any environment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <%- include('footer') %>
+
+    <script>
+        // Initialize any additional inputs after page load
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('JavaScript Input Extension Demo loaded successfully!');
+        });
+    </script>
+</body>
+</html>
