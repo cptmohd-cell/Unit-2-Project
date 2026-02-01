@@ -5,10 +5,6 @@ router.get('/',(req,res)=>{
     res.render('homepage.ejs')
 })
 
-router.get('/demo', (req, res) => {
-    res.render('js-input-demo.ejs')
-})
-
 module.exports = router;
 //guest account log-in route
 router.get("/guest-login", async (req, res) => {
