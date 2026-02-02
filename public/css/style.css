@@ -64,7 +64,7 @@ nav a {
 }
 
 nav a:hover {
-  background-color: rgba(220, 38, 38, 0.2);
+  background-color: rgba(206, 11, 11, 0.726);
   transform: translateY(-2px);
 }
 
