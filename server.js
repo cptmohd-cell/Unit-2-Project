@@ -1,7 +1,4 @@
-/**
- * AutoSpace Performance Parts - Main Server File
- * Express.js application for automotive parts marketplace
- */
+
 const express = require("express") 
 const app = express()
 const dotenv = require("dotenv").config() 

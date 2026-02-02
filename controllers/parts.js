@@ -1,7 +1,4 @@
-/**
- * Parts Controller
- * Handles CRUD operations for automotive parts listings
- */
+
 const express = require("express");
 const router = express.Router();
 const Part = require("../models/Part.js");
